@@ -6,6 +6,7 @@ import reducer from './reducers';
 import { loadState, saveState } from '../services/SaveLocal';
 
 const persistedState = loadState();
+console.log(persistedState);
 
 const store = createStore(reducer, persistedState, applyMiddleware(thunk));
 

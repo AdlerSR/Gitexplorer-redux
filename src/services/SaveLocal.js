@@ -6,14 +6,14 @@ export const loadState = () => {
     }
     return JSON.parse(state);
   } catch (err) {
-    return undefined;
+    return err;
   }
 };
 
 export const saveState = (user) => {
   try {
     const state = JSON.stringify(user);
-    localStorage.setItem('state', state);
+    localStorage.setItem('user', state);
   } catch (err) {
     // error
   }
