@@ -1,6 +1,6 @@
-export function toggleVisibility(visibility) {
+export function togglePopup(visibility, loginStatus) {
   return {
-    type: 'CHANGE_VISIBILITY',
-    payload: { visibility },
+    type: 'CHANGE_POPUP',
+    payload: { visibility, loginStatus },
   };
 }

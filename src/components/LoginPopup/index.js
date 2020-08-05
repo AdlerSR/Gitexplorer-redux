@@ -10,7 +10,13 @@ import './style.css';
 
 import { saveState } from '../../services/SaveLocal';
 
-function LoginPopup({ addUser, toggleVisibility, visibility }) {
+function LoginPopup({
+  addUser,
+  togglePopup,
+  visibility,
+  removeUser,
+  loginStatus,
+}) {
   const [name, setName] = useState('');
 
   function inputChange(e) {
@@ -24,24 +30,43 @@ function LoginPopup({ addUser, toggleVisibility, visibility }) {
   return (
     <div className={className}>
       <form onSubmit={inputChange}>
-        <div>
-          <label htmlFor="username">Github username</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            id="username"
-          />
-          <FiX onClick={() => toggleVisibility('hidden')} />
-        </div>
-        <button
-          onClick={() => {
-            addUser(name);
-            toggleVisibility('hidden');
-          }}
-        >
-          Enviar
-        </button>
+        {loginStatus === false ? (
+          <>
+            <div>
+              <label htmlFor="username">Github username </label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                id="username"
+              />
+              <FiX onClick={() => togglePopup('hidden', loginStatus)} />
+            </div>
+            <button
+              onClick={() => {
+                addUser(name);
+                togglePopup('hidden', true);
+              }}
+            >
+              Enviar
+            </button>
+          </>
+        ) : (
+          <>
+            <p>Quer mesmo sair da sua conta?</p>
+            <div>
+              <button
+                onClick={() => {
+                  removeUser();
+                  togglePopup('hidden', false);
+                }}
+              >
+                {' '}
+                sair
+              </button>
+            </div>
+          </>
+        )}
       </form>
     </div>
   );
@@ -52,6 +77,7 @@ const mapDispatchToProps = (dispatch) =>
 
 const mapStateToProps = (state) => ({
   visibility: state.popup.visible,
+  loginStatus: state.popup.isLogged,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPopup);

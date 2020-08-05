@@ -8,17 +8,19 @@ import './style.css';
 import * as PopupActions from '../../store/actions/popup.action';
 import * as UserActions from '../../store/actions/user.action';
 
-function Header({ user, toggleVisibility, removeUser }) {
+function Header({ user, togglePopup, isLogged }) {
   return (
     <div className="header">
       <h1>GitSearch Redux</h1>
       {user.length === 0 ? (
         <div>
-          <button onClick={() => toggleVisibility('active')}>Entrar</button>
+          <button onClick={() => togglePopup('active', isLogged)}>
+            Entrar
+          </button>
         </div>
       ) : (
         <div>
-          <a onClick={() => removeUser()}>
+          <a onClick={() => togglePopup('active', isLogged)}>
             <p>{user.login}</p>
             <img src={user.avatar_url} alt="user profile" />
           </a>
@@ -31,6 +33,7 @@ function Header({ user, toggleVisibility, removeUser }) {
 const mapStateToProps = (state) => ({
   user: state.user.profile,
   popup: state.popup.visibility,
+  isLogged: state.popup.isLogged,
 });
 
 const mapDispatchToProps = (dispatch) =>
