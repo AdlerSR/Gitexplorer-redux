@@ -1,0 +1,49 @@
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 30px;
+  height: 80px;
+  align-items: center;
+  background-color: #1c1c24;
+}
+
+.header h1{
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.header div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header a{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f6f6f6;
+  text-decoration: none;
+}
+
+.header button{
+  font-size: 20px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #f6f6f6;
+}
+
+.header a p{
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
+.header a img:hover, .header a p:hover, .header button:hover{
+  filter: opacity(80%);
+}
+
+.header a img{
+  width: 60px;
+  border-radius: 100%;
+  margin-left: 10px;
+}

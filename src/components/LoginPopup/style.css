@@ -1,0 +1,77 @@
+.login-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms;
+}
+
+.login-popup.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.login-popup form {
+  background-color: #1c1c24;
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.login-popup form label{
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 3px;
+  font-size: 16px;
+}
+
+.login-popup form input {
+  padding: 5px 3px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  background-color: #2d2d38;
+  color: #f6f6f6;
+  text-transform: capitalize;
+}
+
+.login-popup form button {
+  padding: 5px 3px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  background-color: transparent;
+  border: solid 2px #2d2d38;
+  color: #f6f6f6;
+  text-transform: capitalize;
+  width: 210px;
+  transition: background-color 200ms;
+  cursor: pointer;
+}
+
+.login-popup form button:hover {
+  filter: opacity(80%);
+  background-color: #2d2d38;
+}
+
+.login-popup form svg {
+  color: rgb(175, 20, 20);
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 20px;
+}
