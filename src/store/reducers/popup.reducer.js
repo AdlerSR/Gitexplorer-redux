@@ -2,12 +2,14 @@ const userStateJson = localStorage.getItem('user');
 const userState = JSON.parse(userStateJson);
 
 let logged;
-if (userState.user) {
-  if (userState.user.profile.length === 0 || !userState) {
+if (Array.isArray(userState)) {
+  if (userState.user.profile.length === 0) {
     logged = false;
   } else {
     logged = true;
   }
+} else {
+  logged = false;
 }
 
 const INITIAL_STATE = {
